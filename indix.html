@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>University Admission Checker Ghana</title>
+
+<style>
+
+/* ===== RESET & GENERAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: #2d3748;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  overflow-x: hidden;
+}
+
+/* ===== UTILITIES ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 16px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  background: rgba(26, 54, 93, 0.95);
+  backdrop-filter: blur(10px);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+
+nav h2 {
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(45deg, #4299e1, #63b3ed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #63b3ed;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a:hover {
+  width: 100%;
+  color: #63b3ed;
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 50%, #4299e1 100%);
+  color: white;
+  text-align: center;
+  padding: 160px 20px 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+  opacity: 0.3;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #ffffff, #e2e8f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  opacity: 0.9;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.hero .btn {
+  background: white;
+  color: #1a365d;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.hero .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* ===== FEATURES ===== */
+.features {
+  background: white;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 60px;
+  color: #1a365d;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #2d3748;
+}
+
+.card p {
+  color: #718096;
+  font-size: 1rem;
+}
+
+/* ===== HOW IT WORKS ===== */
+.steps {
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  text-align: center;
+}
+
+.steps h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 60px;
+  color: #1a365d;
+}
+
+.steps .step-list {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.step-item {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  max-width: 250px;
+  transition: all 0.3s ease;
+}
+
+.step-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.step-item p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2d3748;
+  margin: 0;
+}
+
+/* ===== CTA ===== */
+.cta {
+  background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.cta h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.cta .btn {
+  background: white;
+  color: #1a365d;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.cta .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #1a365d;
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+footer p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  nav {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  nav .nav-links {
+    gap: 20px;
+  }
+  
+  .hero {
+    padding: 120px 20px 80px;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+  }
+  
+  .features h2,
+  .steps h2,
+  .cta h2 {
+    font-size: 2rem;
+  }
+  
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .step-list {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <h2>Admission Checker</h2>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#features">Features</a>
+    <a href="#steps">How It Works</a>
+    <a href="#start">Start</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1>University Admission Checker Ghana 🎓</h1>
+    <p>
+      Discover universities and programs you qualify for using your WASSCE results instantly.
+      Built for Ghanaian students to simplify admission decisions.
+    </p>
+    <a class="btn" href="https://alfred-university-checker.vercel.app/" target="_blank">
+      Check My Admission Now
+    </a>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="features section">
+  <div class="container">
+    <h2>Platform Features</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>📄 WASSCE Analysis</h3>
+        <p>Enter or upload your WASSCE results for automatic evaluation.</p>
+      </div>
+      <div class="card">
+        <h3>🏫 All Ghana Universities</h3>
+        <p>Matches results with Traditional, Technical and Private universities.</p>
+      </div>
+      <div class="card">
+        <h3>⚡ Instant Admission Prediction</h3>
+        <p>See programs you qualify for within seconds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="steps" class="steps section">
+  <div class="container">
+    <h2>How It Works</h2>
+    <div class="step-list">
+      <div class="step-item">
+        <p>1️⃣ Enter Your WASSCE Grades</p>
+      </div>
+      <div class="step-item">
+        <p>2️⃣ System Analyzes Admission Requirements</p>
+      </div>
+      <div class="step-item">
+        <p>3️⃣ View Universities & Programs You Qualify For</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section id="start" class="cta section">
+  <div class="container">
+    <h2>Ready to Check Your Admission Chances?</h2>
+    <a class="btn" href="https://alfred-university-checker.vercel.app/" target="_blank">
+      Start Admission Check
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2026 University Admission Checker | Built for Ghanaian Students</p>
+  </div>
+</footer>
+
+</body>
+</html>
+
