@@ -220,6 +220,62 @@ nav a:hover {
   font-size: 1rem;
 }
 
+/* ===== TESTIMONIALS ===== */
+.testimonials {
+  background: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.testimonials h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 60px;
+  color: #1a365d;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.testimonial {
+  background: #f8fafc;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.testimonial:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.testimonial img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+.testimonial p {
+  font-style: italic;
+  color: #4a5568;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.testimonial .name {
+  font-weight: 600;
+  color: #2d3748;
+}
+
 /* ===== HOW IT WORKS ===== */
 .steps {
   background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
@@ -363,6 +419,7 @@ footer p {
   <div class="nav-links">
     <a href="#">Home</a>
     <a href="#features">Features</a>
+    <a href="#testimonials">Testimonials</a>
     <a href="#steps">How It Works</a>
     <a href="#start">Start</a>
   </div>
@@ -398,6 +455,30 @@ footer p {
       <div class="card">
         <h3>⚡ Instant Admission Prediction</h3>
         <p>See programs you qualify for within seconds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials section">
+  <div class="container">
+    <h2>What Students Say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Student 1">
+        <p>"This tool helped me find the perfect university program for my WASSCE results. So easy and accurate!"</p>
+        <div class="name">Sarah Mensah</div>
+      </div>
+      <div class="testimonial">
+        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Student 2">
+        <p>"I was confused about admissions, but this checker gave me clear options. Highly recommend!"</p>
+        <div class="name">Kofi Asante</div>
+      </div>
+      <div class="testimonial">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Student 3">
+        <p>"Saved me so much time researching universities. Now I know exactly where I qualify."</p>
+        <div class="name">Ama Osei</div>
       </div>
     </div>
   </div>
